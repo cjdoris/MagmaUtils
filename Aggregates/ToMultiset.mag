@@ -1,0 +1,21 @@
+freeze;
+
+intrinsic ToMultiset(xs) -> {**}
+  {Converts xs to a multiset.}
+  return {* x : x in xs *};
+end intrinsic;
+
+intrinsic ToMultiset(xs :: {**}) -> {**}
+  {"}
+  return xs;
+end intrinsic;
+
+intrinsic ToMultiset(xs :: {}) -> {**}
+  {"}
+  return SetToMultiset(xs);
+end intrinsic;
+
+intrinsic ToMultiset(xs :: []) -> {**}
+  {"}
+  return SequenceToMultiset(xs);
+end intrinsic;

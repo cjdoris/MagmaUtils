@@ -1,0 +1,26 @@
+freeze;
+
+intrinsic ToSet(xs) -> {}
+  {Converts xs to a set.}
+  return {x : x in xs};
+end intrinsic;
+
+intrinsic ToSet(xs :: {}) -> {}
+  {"}
+  return xs;
+end intrinsic;
+
+intrinsic ToSet(xs :: []) -> {}
+  {"}
+  return SequenceToSet(xs);
+end intrinsic;
+
+intrinsic ToSet(xs :: {**}) -> {}
+  {"}
+  return MultisetToSet(xs);
+end intrinsic;
+
+intrinsic ToSet(xs :: {@@}) -> {}
+  {"}
+  return IndexedSetToSequence(xs);
+end intrinsic;

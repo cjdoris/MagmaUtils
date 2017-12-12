@@ -1,0 +1,12 @@
+freeze;
+
+intrinsic ToTuple(xs) -> Tup
+  {Converts xs to a tuple.}
+  return <x : x in xs>;
+end intrinsic;
+
+intrinsic ToTuple(xs :: Tup) -> Tup
+  {"}
+  return xs;
+end intrinsic;
+

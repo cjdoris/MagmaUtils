@@ -1,0 +1,16 @@
+freeze;
+
+intrinsic ToIndexedSet(xs) -> {@@}
+  {Converts xs to an indexed set.}
+  return {@ x : x in xs @};
+end intrinsic;
+
+intrinsic ToIndexedSet(xs :: {@@}) -> {@@}
+  {"}
+  return xs;
+end intrinsic;
+
+intrinsic ToIndexedSet(xs :: {}) -> {@@}
+  {"}
+  return SetToIndexedSet(xs);
+end intrinsic;

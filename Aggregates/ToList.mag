@@ -1,0 +1,21 @@
+freeze;
+
+intrinsic ToList(xs) -> List
+  {Converts xs to a list.}
+  return [* x : x in xs *];
+end intrinsic;
+
+intrinsic ToList(xs :: List) -> List
+  {"}
+  return xs;
+end intrinsic;
+
+intrinsic ToList(xs :: Tup) -> List
+  {"}
+  return TupleToList(xs);
+end intrinsic;
+
+intrinsic ToList(xs :: []) -> List
+  {"}
+  return SequenceToList(xs);
+end intrinsic;

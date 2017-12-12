@@ -1,0 +1,8 @@
+{
+  ToSequence.mag
+  ToSet.mag
+  ToIndexedSet.mag
+  ToMultiset.mag
+  ToList.mag
+  ToTuple.mag
+}
