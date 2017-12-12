@@ -5,4 +5,17 @@
   ToMultiset.mag
   ToList.mag
   ToTuple.mag
+  Keys.mag
+  Values.mag
+  ValuesList.mag
+  Items.mag
+  ItemsList.mag
+  ItemsToAssociativeArray.mag
+  AssociativeArrayToMap.mag
+  Zip.mag
+  Unzip.mag
+  SortBy.mag
+  KeyFunction.mag
+  GroupBy.mag
+  GroupByMany.mag
 }

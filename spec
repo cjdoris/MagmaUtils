@@ -1,3 +1,5 @@
 {
-  +Aggregates
+  Aggregates {
+    +spec
+  }
 }
