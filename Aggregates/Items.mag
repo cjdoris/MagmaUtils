@@ -1,0 +1,11 @@
+freeze;
+
+intrinsic Items(xs :: []) -> []
+  {Key-value pairs.}
+  return [<i, xs[i]> : i in [1..#xs] | IsDefined(xs, i)];
+end intrinsic;
+
+intrinsic Items(xs :: Assoc) -> []
+  {"}
+  return [<k, xs[k]> : k in Keys(xs)];
+end intrinsic;

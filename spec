@@ -2,4 +2,7 @@
   Aggregates {
     +spec
   }
+  IO {
+    +spec
+  }
 }

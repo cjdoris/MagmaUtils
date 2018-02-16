@@ -1,0 +1,6 @@
+freeze;
+
+intrinsic ItemsList(xs :: Assoc) -> List
+  {Key-value pairs.}
+  return [*<k, xs[k]> : k in Keys(xs)*];
+end intrinsic;

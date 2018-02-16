@@ -1,0 +1,24 @@
+freeze;
+
+intrinsic SortBy(~xs :: [], key :: UserProgram, ~permut)
+  {Sorts the sequence xs in place according to the given key.}
+  keys := [key(x) : x in xs];
+  Sort(~keys, ~permut);
+  xs := [xs[i^permut] : i in [1..#xs]];
+end intrinsic;
+
+intrinsic SortBy(~xs :: [], key)
+  {"}
+  SortBy(~xs, key, ~permut);
+end intrinsic;
+
+intrinsic SortBy(xs :: [], key) -> [], GrpPermElt
+  {Sorts the sequence according to the given key. Also returns the corresponding permutation.}
+  SortBy(~xs, key, ~permut);
+  return xs, permut;
+end intrinsic;
+
+intrinsic SortBy(~xs :: [], key, ~permut)
+  {Sorts the sequence xs in place by the key'th entry.}
+  SortBy(~xs, KeyFunction(xs, key), ~permut);
+end intrinsic;

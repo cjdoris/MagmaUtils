@@ -1,0 +1,39 @@
+freeze;
+
+intrinsic GroupBy(xs :: [], key :: UserProgram) -> Assoc
+  {The associative array whose keys are the unique values of `key(x)` over `x` in `xs`, and whose values are the subset of corresponding `x`.}
+  A := AssociativeArray();
+  for x in xs do
+    k := key(x);
+    if IsDefined(A, k) then
+      Append(~A[k], x);
+    else
+      A[k] := x;
+    end if;
+  end for;
+  return A;
+end intrinsic;
+
+intrinsic GroupBy(xs :: [], key) -> Assoc
+  {"}
+  return GroupBy(xs, KeyFunction(xs, key));
+end intrinsic;
+
+intrinsic GroupBy(xs :: {}, key :: UserProgram) -> Assoc
+  {"}
+  A := AssociativeArray();
+  for x in xs do
+    k := key(x);
+    if IsDefined(A, k) then
+      Include(~A[k], x);
+    else
+      A[k] := {x};
+    end if;
+  end for;
+  return A;
+end intrinsic;
+
+intrinsic GroupBy(xs :: {}, key) -> Assoc
+  {"}
+  return GroupBy(xs, KeyFunction(xs, key));
+end intrinsic;

@@ -1,0 +1,37 @@
+freeze;
+
+intrinsic KeyFunction(U :: {[ [] ]}, i :: RngIntElt) -> UserProgram
+  {The function retrieving the ith entry of an element of U.}
+  return func<x | x[i]>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[ Tup ]}, i :: RngIntElt) -> UserProgram
+  {"}
+  return func<x | x[i]>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[ List ]}, i :: RngIntElt) -> UserProgram
+  {"}
+  return func<x | x[i]>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[ Rec ]}, i :: MonStgElt) -> UserProgram
+  {"}
+  return func<x | x``i>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[ Assoc ]}, i) -> UserProgram
+  {"}
+  return func<x | x[i]>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[.]}, i :: Map) -> UserProgram
+  {The map as a function.}
+  return func<x | i(x)>;
+end intrinsic;
+
+intrinsic KeyFunction(U :: {[.]}, i :: Intrinsic) -> UserProgram
+  {The intrinsic as a function.}
+  return func<x | i(x)>;
+end intrinsic;
+

@@ -1,0 +1,35 @@
+freeze;
+
+intrinsic Unzip(pairs :: [Tup]) -> [], []
+  {The first and second of each pair in pairs.}
+  U := Universe(pairs);
+  require NumberOfComponents(U) eq 2: "Argument must be a sequence of tuples of length 2.";
+  xs := [U[1]|];
+  ys := [U[2]|];
+  for i in [1..#pairs] do
+    if IsDefined(pairs, i) then
+      pair := pairs[i];
+      xs[i] := pair[1];
+      ys[i] := pair[2];
+    end if;
+  end for;
+  return xs, ys;
+end intrinsic;
+
+intrinsic Unzip3(triples :: [Tup]) -> [], [], []
+  {The first, second and third of each triple in triples.}
+  U := Universe(triples);
+  require NumberOfComponents(U) eq 2: "Argument must be a sequence of tuples of length 2.";
+  xs := [U[1]|];
+  ys := [U[2]|];
+  zs := [U[3]|];
+  for i in [1..#triples] do
+    if IsDefined(triples, i) then
+      triple := triples[i];
+      xs[i] := triple[1];
+      ys[i] := triple[2];
+      zs[i] := triple[3];
+    end if;
+  end for;
+  return xs, ys, zs;
+end intrinsic;

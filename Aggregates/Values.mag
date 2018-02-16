@@ -1,0 +1,11 @@
+freeze;
+
+intrinsic Values(xs :: []) -> []
+  {The defined values of xs.}
+  return [x : x in xs];
+end intrinsic;
+
+intrinsic Values(xs :: Assoc) -> []
+  {"}
+  return [xs[k] : k in Keys(xs)];
+end intrinsic;

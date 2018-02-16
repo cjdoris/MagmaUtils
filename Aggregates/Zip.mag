@@ -1,0 +1,23 @@
+freeze;
+
+intrinsic Zip(xs :: [], ys :: []) -> []
+  {The corresponding pairs from each list, where both are defined.}
+  ret := [];
+  for i in [1..Min(#xs, #ys)] do
+    if IsDefined(xs, i) and IsDefined(ys, i) then
+      ret[i] := <xs[i], ys[i]>;
+    end if;
+  end for;
+  return ret;
+end intrinsic;
+
+intrinsic Zip(xs :: [], ys :: [], zs :: []) -> []
+  {The corresponding triples from each list, where all are defined.}
+  ret := [];
+  for i in [1..Min([#xs, #ys, #zs])] do
+    if IsDefined(xs, i) and IsDefined(ys, i) and IsDefined(zs, i) then
+      ret[i] := <xs[i], ys[i], zs[i]>;
+    end if;
+  end for;
+  return ret;
+end intrinsic;

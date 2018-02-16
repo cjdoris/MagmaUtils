@@ -1,0 +1,17 @@
+intrinsic ReadLines(F :: File) -> []
+  {The lines of F.}
+  lines := [Strings()|];
+  while true do
+    line := Gets(F);
+    if IsEof(line) then
+      return lines;
+    else
+      Append(~lines, line);
+    end if;
+  end while;
+end intrinsic;
+
+intrinsic ReadLines(F :: MonStgElt : Flag:="r") -> []
+  {"}
+  return ReadLines(Open(F, Flag));
+end intrinsic;

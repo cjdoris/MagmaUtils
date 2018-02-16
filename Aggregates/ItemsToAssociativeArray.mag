@@ -1,0 +1,10 @@
+freeze;
+
+intrinsic ItemsToAssociativeArray(items) -> Assoc
+  {The associative array such that items[i][2] is the value at key items[i][1].}
+  A := AssociativeArray();
+  for item in items do
+    A[item[1]] := item[2];
+  end for;
+  return A;
+end intrinsic;

@@ -1,0 +1,7 @@
+freeze;
+
+intrinsic ValuesList(xs :: Assoc) -> List
+  {The defined values of xs.}
+  return [* xs[k] : k in xs *];
+end intrinsic;
+
