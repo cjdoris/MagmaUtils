@@ -5,4 +5,7 @@
   IO {
     +spec
   }
+  Stats {
+    +spec
+  }
 }

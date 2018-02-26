@@ -1,0 +1,20 @@
+intrinsic Fractile(X :: [RngElt], P :: RngElt) -> RngElt
+  {The `P`-fractile of `X`.}
+  require #X ge 1: "X must be non-empty";
+  require 0 le P and P le 1: "P must be between 0 and 1";
+  Sort(~X);
+  n := #X;
+  if n eq 1 then
+    return X[1];
+  elif P eq 0 then
+    return X[1];
+  elif P eq 1 then
+    return X[n];
+  end if;
+  assert 0 lt P and P lt 1;
+  i := 1 + P*(n-1);
+  assert 1 lt i and i lt n;
+  i0 := Floor(i);
+  i1 := i0 + 1;
+  return (i-i0)*X[i0] + (i1-i)*X[i1];
+end intrinsic;

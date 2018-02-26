@@ -1,0 +1,5 @@
+intrinsic Mean(X :: {[ RngElt ]}) -> RngElt
+  {The mean of X.}
+  require #X gt 0: "X must be non-empty";
+  return &+X / #X;
+end intrinsic;

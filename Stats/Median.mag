@@ -1,0 +1,4 @@
+intrinsic Median(X :: [RngElt]) -> RngElt
+  {The median of X.}
+  return Fractile(X, 1/2);
+end intrinsic;
