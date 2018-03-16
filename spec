@@ -8,4 +8,7 @@
   Stats {
     +spec
   }
+  Strings {
+    +spec
+  }
 }
