@@ -1,0 +1,49 @@
+function shuffle(X)
+  n := #X;
+  return [* X[i^g] : i in [1..n] *] where g:=Random(SymmetricGroup(n));
+end function;
+
+intrinsic Shuffle(X :: [], n :: RngIntElt) -> []
+  {A copy of the first n elements of X in a random order.}
+  require n ge 0: "n must not be negative";
+  if n eq 0 then
+    return X[1..0];
+  else
+    Y := [];
+    g := Random(SymmetricGroup(n));
+    for i in [1..n] do
+      if IsDefined(X, i) then
+        Y[i^g] := X[i];
+      end if;
+    end for;
+    return Y;
+  end if;
+end intrinsic;
+
+intrinsic Shuffle(X :: []) -> []
+  {A copy of X in a random order.}
+  return Shuffle(X, #X);
+end intrinsic;
+
+intrinsic Shuffle(X :: List) -> List
+  {"}
+  if #X eq 0 then
+    return X;
+  else
+    return shuffle(X);
+  end if;
+end intrinsic;
+
+intrinsic Shuffle(X :: {@@}) -> {@@}
+  {"}
+  if #X eq 0 then
+    return X;
+  else
+    return {@ x : x in shuffle(X) @};
+  end if;
+end intrinsic;
+
+intrinsic Shuffle(X :: {}) -> {@@}
+  {"}
+  return Shuffle(SetToIndexedSet(X));
+end intrinsic;

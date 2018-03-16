@@ -18,4 +18,5 @@
   KeyFunction.mag
   GroupBy.mag
   GroupByMany.mag
+  Shuffle.mag
 }
