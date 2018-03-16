@@ -1,3 +1,6 @@
+---
+---
+
 # MagmaUtils
 
 Adds some basic functionality missing from [Magma](http://magma.maths.usyd.edu.au/magma).
@@ -11,7 +14,7 @@ Note that the package is arranged into sub-packages, each with its own `spec` fi
 
 ## Documentation
 
-- [Aggregates](docs/aggregates)
-- [IO](docs/IO)
-- [Statistics](docs/statistics)
-- [Strings](docs/strings)
+- [Aggregates]({{site.baseurl}}/aggregates)
+- [IO]({{site.baseurl}}/IO)
+- [Statistics]({{site.baseurl}}/statistics)
+- [Strings]({{site.baseurl}}/strings)
