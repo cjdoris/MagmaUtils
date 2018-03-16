@@ -1,0 +1,4 @@
+intrinsic TouchFile(filename :: MonStgElt)
+  {Ensures the file exists.}
+  _ := Open(filename, "a");
+end intrinsic;
