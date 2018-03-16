@@ -15,6 +15,6 @@ Note that the package is arranged into sub-packages, each with its own `spec` fi
 ## Documentation
 
 - [Aggregates]({{site.baseurl}}/aggregates)
-- [IO]({{site.baseurl}}/IO)
+- [Input & Output]({{site.baseurl}}/io)
 - [Statistics]({{site.baseurl}}/statistics)
 - [Strings]({{site.baseurl}}/strings)
