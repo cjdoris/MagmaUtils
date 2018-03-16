@@ -1,0 +1,16 @@
+intrinsic ReplaceAll(P :: MonStgElt, R :: MonStgElt, S :: MonStgElt) -> MonStgElt
+  {Replaces the each occurrance of P in S by R.}
+  require #P ge 1: "the pattern must not be empty";
+  ret := "";
+  while #S gt 0 do
+    i := Index(S, P);
+    if i eq 0 then
+      ret cat:= S;
+      S := "";
+    else
+      ret cat:= S[1..i-1] cat R;
+      S := S[i+#P..#S];
+    end if;
+  end while;
+  return ret;
+end intrinsic;
