@@ -12,7 +12,7 @@ intrinsic RandomSubset(X :: Str, n :: RngIntElt) -> {}
 end intrinsic;
 
 intrinsic RandomSubset(X :: [], n :: RngIntElt) -> {}
-  {A random set of n distinct elements of X.}
+  {"}
   require 0 le n and n le #X: "n must be in [0..#X]";
   return RandomSubset(SequenceToSet(X), n);
 end intrinsic;

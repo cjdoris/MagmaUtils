@@ -133,6 +133,20 @@ The intrinsic as a function.
 The indices of defined entries of `xs`.
 
 
+<a id="RandomSubset"></a><a id="RandomSubset--Str--etc"></a><a id="RandomSubset--Str--RngIntElt"></a><a id="RandomSubset--seq--etc"></a><a id="RandomSubset--seq--RngIntElt"></a>
+> **RandomSubset** (X :: *Str*, n :: *RngIntElt*)
+> 
+> **RandomSubset** (X :: [], n :: *RngIntElt*)
+> 
+> -> {}
+> {:.ret}
+{:.intrinsic}
+
+A random set of `n` distinct elements of `X`.
+
+
+
+
 <a id="Shuffle"></a><a id="Shuffle--seq--etc"></a><a id="Shuffle--seq--RngIntElt"></a>
 > **Shuffle** (X :: [], n :: *RngIntElt*)
 > 
