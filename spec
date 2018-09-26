@@ -11,9 +11,6 @@
   Strings {
     +spec
   }
-  Random {
-    +spec
-  }
   GlobalStore.mag
   TriangularNumbers.mag
 }
