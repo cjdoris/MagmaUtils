@@ -18,3 +18,5 @@ Note that the package is arranged into sub-packages, each with its own `spec` fi
 - [Input & Output]({{site.baseurl}}/io)
 - [Statistics]({{site.baseurl}}/statistics)
 - [Strings]({{site.baseurl}}/strings)
+- [Global Store]({{site.baseurl}}/global-store)
+- [Triangular numbers]({{site.baseurl}}/triangular-numbers)
