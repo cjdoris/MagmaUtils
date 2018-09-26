@@ -1,0 +1,19 @@
+intrinsic RandomSubset(X :: Str, n :: RngIntElt) -> {}
+  {A random set of n distinct elements of X.}
+  require 0 le n and n le #X: "n must be in [0..#X]";
+  if n gt (#X div 2) then
+    return RandomSubset({x:x in X}, n);
+  end if;
+  Y := {};
+  while #Y lt n do
+    Include(~Y, Random(X));
+  end while;
+  return Y;
+end intrinsic;
+
+intrinsic RandomSubset(X :: [], n :: RngIntElt) -> {}
+  {A random set of n distinct elements of X.}
+  require 0 le n and n le #X: "n must be in [0..#X]";
+  return RandomSubset(SequenceToSet(X), n);
+end intrinsic;
+

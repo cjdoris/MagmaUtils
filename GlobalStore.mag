@@ -1,0 +1,44 @@
+///# Global store
+///
+/// We define a "global store", which is a store (an associative array which is modifiable without a reference, as defined by `NewStore()`) defined globally. It is accessible with `GlobalStore()`, and we provide intrinsics to modify and query it directly.
+/// 
+/// This is mainly useful for debugging. Specifically it allows us to save values from within the Magma debugger, and retrieve them from the normal prompt.
+
+freeze;
+
+GLOBAL_STORE := NewStore();
+
+intrinsic GlobalStore() -> .
+  {The global store.}
+  return GLOBAL_STORE;
+end intrinsic;
+
+intrinsic GlobalStoreClear()
+  {Clears the global store.}
+  StoreClear(GlobalStore());
+end intrinsic;
+
+intrinsic GlobalStoreGet(field :: MonStgElt) -> .
+  {The value of the given field in the global store.}
+  return StoreGet(GlobalStore(), field);
+end intrinsic;
+
+intrinsic GlobalStoreIsDefined(field :: MonStgElt) -> BoolElt, .
+  {True if the field is defined in the global store. If so, also returns the value.}
+  return StoreIsDefined(GlobalStore(), field);
+end intrinsic;
+
+intrinsic GlobalStoreKeys() -> {}
+  {The set of field names defined in the global store.}
+  return StoreKeys(GlobalStore());
+end intrinsic;
+
+intrinsic GlobalStoreRemove(field :: MonStgElt)
+  {Removes the given field from the global store.}
+  StoreRemove(GlobalStore(), field);
+end intrinsic;
+
+intrinsic GlobalStoreSet(field :: MonStgElt, value :: .)
+  {Sets the field to the given value in the global store.}
+  StoreSet(GlobalStore(), field, value);
+end intrinsic;

@@ -1,0 +1,142 @@
+///# Triangular numbers
+///
+/// Triangular numbers (of dimension 2) are defined by `T(n) = T(n;2) = n(n+1)/2 = Binomial(n+1,2)`.
+/// 
+/// More generally, triangular numbers of dimension 1 are `T(n;1) = n = Binomial(n,1)` and triangular numbers of dimension `d+1` are `T(n;d+1) = T(1;d) + ... + T(n;d) = Binomial(n+d-1,d)`.
+
+function T(n)
+  return Binomial(n+1, 2);
+end function;
+
+function T_d(n,d)
+  return Binomial(n+d-1, d);
+end function;
+
+// returns n such that T(n-1) lt n le T(n)
+function ceilinvT(i)
+  if i eq 0 then
+    return 0;
+  end if;
+  j := 8*i+1;
+  ok, r := IsSquare(j);
+  if ok then
+    n := Ceiling((r-1)/2);
+  else
+    n := Ceiling((Sqrt(j)-1)/2);
+  end if;
+  assert T(n-1) lt i and i le T(n);
+  return n;
+end function;
+
+function ceilinvT_d(i, d)
+  if i eq 0 then
+    return 0;
+  end if;
+  j := Factorial(d) * i;
+  ok, r := IsPower(j, d);
+  if not ok then
+    r := Ceiling(Root(j, d));
+  end if;
+  for n in [r-d+1 .. r-1] do
+    if T_d(n-1, d) lt i and i le T_d(n, d) then
+      return n;
+    end if;
+  end for;
+  assert false;
+end function;
+
+function lin2tri(i)
+  n := ceilinvT(i);
+  return [n, i+n-T(n)];
+end function;
+
+function lin2tri_d(i,d)
+  n := ceilinvT_d(i, d);
+  j := i + T_d(n, d-1) - T_d(n, d);
+  case d:
+  when 1:
+    t := [];
+  when 2:
+    t := [j];
+  when 3:
+    t := lin2tri(j);
+  else
+    t := lin2tri_d(j, d-1);
+  end case;
+  return [n] cat t;
+end function;
+
+function tri2lin(idx)
+  n := idx[1];
+  return T(n) - n + idx[2];
+end function;
+
+function tri2lin_d(idx, d)
+  n := idx[1];
+  case d:
+  when 1:
+    i := 0;
+  when 2:
+    i := idx[2];
+  when 3:
+    i := tri2lin(idx[2..3]);
+  else
+    i := tri2lin_d(idx[2..d], d-1);
+  end case;
+  return T_d(n, d) - T_d(n, d-1) + i;
+end function;
+
+intrinsic TriangularNumber(n :: RngIntElt, d :: RngIntElt) -> RngIntElt
+  {The nth triangular number in dimension d. Equal to `Binomial(n+d-1,d)`.}
+  require n ge 0: "n must be non-negative";
+  require d ge 1: "d must be positive";
+  return T_d(n,d);
+end intrinsic;
+
+intrinsic TriangularNumber(n :: RngIntElt) -> RngIntElt
+  {The nth triangular number. Equal to `Binomial(n+1,2) = n*(n+1)/2`.}
+  require n ge 0: "n must be non-negative";
+  return T(n);
+end intrinsic;
+
+intrinsic LinearToTriangularIndex(i :: RngIntElt, d :: RngIntElt) -> []
+  {Converts from linear to triangular indexing in dimension d. That is, returns the ith array `[i1,i2,...,id]` lexicographically with `i1 ge i2 ge ... ge id ge 1`.}
+  require i ge 1: "i must be positive";
+  require d ge 1: "d must be positive";
+  case d:
+  when 1:
+    return [i];
+  when 2:
+    return lin2tri(i);
+  else
+    return lin2tri_d(i,d);
+  end case;
+end intrinsic;
+
+intrinsic LinearToTriangularIndex(i :: RngIntElt) -> []
+  {Converts from linear to triangular indexing. That is, returns the ith array `[i1,i2]` lexicographically with `i1 ge i2 ge 1`.}
+  require i ge 1: "i must be positive";
+  return lin2tri(i);
+end intrinsic;
+
+intrinsic TriangularToLinearIndex(idx :: [RngIntElt], d :: RngIntElt) -> RngIntElt
+  {Converts from triangular indexing in dimension d to linear.}
+  require d ge 1: "d must be at least 1";
+  require #idx eq d: "idx must have length d";
+  require forall{i : i in idx | i ge 0}: "each i in idx must be non-negative";
+  case d:
+  when 1:
+    return idx[1];
+  when 2:
+    return tri2lin(idx);
+  else
+    return tri2lin_d(idx, d);
+  end case;
+end intrinsic;
+
+intrinsic TriangularToLinearIndex(idx :: [RngIntElt]) -> RngIntElt
+  {Converts from triangular indexing to linear.}
+  require #idx eq 2: "idx must have length 2";
+  require forall{i : i in idx | i ge 0}: "each i in idx must be non-negative";
+  return tri2lin(idx);
+end intrinsic;
