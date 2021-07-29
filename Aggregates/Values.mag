@@ -7,5 +7,5 @@ end intrinsic;
 
 intrinsic Values(a::Assoc) -> List
   {return the values of an associative array}
-  return [* a[k] : k in Keys(a) *];
+  return [* elt : elt in a *];
 end intrinsic;
