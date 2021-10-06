@@ -1,4 +1,4 @@
-intrinsic ReadLines(F :: File) -> []
+intrinsic ReadLines(F :: IO) -> []
   {The lines of F.}
   lines := [Strings()|];
   while true do
