@@ -1,6 +1,0 @@
-freeze;
-
-intrinsic Keys(xs :: []) -> {}
-  {The indices of defined entries of xs.}
-  return {i : i in [1..#xs] | IsDefined(xs, i)};
-end intrinsic;

@@ -123,16 +123,6 @@ The map as a function.
 The intrinsic as a function.
 
 
-<a id="Keys"></a><a id="Keys--seq"></a>
-> **Keys** (xs :: [])
-> 
-> -> {}
-> {:.ret}
-{:.intrinsic}
-
-The indices of defined entries of `xs`.
-
-
 <a id="RandomSubset"></a><a id="RandomSubset--Str--etc"></a><a id="RandomSubset--Str--RngIntElt"></a><a id="RandomSubset--seq--etc"></a><a id="RandomSubset--seq--RngIntElt"></a>
 > **RandomSubset** (X :: *Str*, n :: *RngIntElt*)
 > 
